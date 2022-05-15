@@ -1,26 +1,40 @@
 import '../styles/TodoForm.css'
-import { useState } from 'react'
+import React, { useState, } from 'react'
+import { Todo } from './Home'
 import { v1 } from 'uuid'
 
-const TodoForm = ({ setTodos }) => {
+interface TodoFormProps {
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+}
+
+const TodoForm = ({ setTodos }: TodoFormProps) => {
+
   const [todoItem, setTodoItem] = useState('');
-  const handleSubmit = (e) => {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newTodo = todoItem;
-    setTodos((prevTodos) => [...prevTodos, { name: newTodo, id: v1() }]);
+
+    setTodos((prev) => [
+      ...prev,
+      {
+        name: todoItem,
+        id: v1()
+      }
+    ]);
     setTodoItem('');
   }
+
   return (
     <form
       className="todo-form"
       onSubmit={handleSubmit}
     >
       <input
-        id='td'
         type="text"
-        required
-        value={todoItem}
         onChange={(e) => setTodoItem(e.target.value)}
+        id='td'
+        value={todoItem}
+        required
         placeholder="What should be done" />
       <input
         type="submit"
