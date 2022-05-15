@@ -1,0 +1,18 @@
+.Home {
+  padding: 10px;
+}
+
+.Home ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Home li {
+  margin: 10px 5px;
+  padding: 10px;
+  background: wheat;
+}
+
+.Home li:hover {
+  text-decoration: line-through;
+}

@@ -1,0 +1,19 @@
+.todo-form {
+  padding: 10px;
+}
+
+.todo-form input {
+  background: wheat;
+  font-size: 16px;
+  margin: 5px 10px;
+  padding: 10px;
+  border: none;
+}
+
+.todo-form input[type='submit'] {
+  background: coral;
+}
+
+.todo-form input[type='submit']:hover {
+  background: darkgoldenrod;
+}
