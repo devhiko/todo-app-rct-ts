@@ -3,6 +3,7 @@ import { useState } from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
+// todo data
 export interface Todo {
   name: string
   id: string
@@ -10,8 +11,8 @@ export interface Todo {
 
 const Home = () => {
 
+  // todo state
   const [todos, setTodos] = useState<Todo[]>([]);
-
   return (
     <div className="Home">
       {todos.length ?

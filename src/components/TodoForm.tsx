@@ -3,14 +3,17 @@ import React, { useState, } from 'react'
 import { Todo } from './Home'
 import { v1 } from 'uuid'
 
+// todo form props
 interface TodoFormProps {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
 const TodoForm = ({ setTodos }: TodoFormProps) => {
 
+  // todo item state
   const [todoItem, setTodoItem] = useState('');
 
+  // submit evt
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -20,10 +23,9 @@ const TodoForm = ({ setTodos }: TodoFormProps) => {
         name: todoItem,
         id: v1()
       }
-    ]);
-    setTodoItem('');
+    ])
+    setTodoItem('')
   }
-
   return (
     <form
       className="todo-form"
