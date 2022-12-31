@@ -1,1 +1,2 @@
+-> add event tests
 * bunu TDD ile yeniden yaz !

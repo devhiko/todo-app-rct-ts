@@ -1,28 +1,14 @@
 import "../styles/TodoForm.css";
-import React, { useState } from "react";
-import { Todo } from "./Home";
-import { v1 } from "uuid";
-
-// todo form props
-interface TodoFormProps {
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-}
-
-const TodoForm = ({ setTodos }: TodoFormProps) => {
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { type Todo } from "./Home";
+import { v1 as uid } from "uuid";
+export const TodoForm = ({ setTodos }: { setTodos: Dispatch<SetStateAction<Todo[]>> }) => {
   // todo item state
   const [todoItem, setTodoItem] = useState("");
-
   // submit evt
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    setTodos((prev) => [
-      ...prev,
-      {
-        name: todoItem,
-        id: v1(),
-      },
-    ]);
+    setTodos((prev) => [...prev, { name: todoItem, id: uid() }]);
     setTodoItem("");
   };
   return (
@@ -39,5 +25,3 @@ const TodoForm = ({ setTodos }: TodoFormProps) => {
     </form>
   );
 };
-
-export default TodoForm;

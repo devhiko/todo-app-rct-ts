@@ -1,15 +1,10 @@
 import "../styles/Home.css";
 import { useState } from "react";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
-
+import { TodoForm } from "./TodoForm";
+import { TodoList } from "./TodoList";
 // todo data
-export interface Todo {
-  name: string;
-  id: string;
-}
-
-const Home = () => {
+export type Todo = { name: string; id: string };
+export const Home = () => {
   // todo state
   const [todos, setTodos] = useState<Todo[]>([]);
   return (
@@ -23,5 +18,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TodoForm from "../components/TodoForm";
-
+import { TodoForm } from "../components/TodoForm";
 describe("TodoForm test", () => {
   it("should render todo form everytime", () => {
     const mocksetTodos = jest.fn();

@@ -1,23 +1,21 @@
-import { Todo } from "./Home";
-
-// todo list props
-interface TodoListProps {
+import { type Todo } from "./Home";
+export const TodoList = ({
+  todos,
+  setTodos,
+}: {
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-}
-
-const TodoList = ({ todos, setTodos }: TodoListProps) => {
+}) => {
   // delete evt
-  const handleDelete = (id: string) => {
-    const deletedTodo = todos.filter((todo) => todo.id !== id);
-    setTodos(deletedTodo);
+  const handleDelete = (id: string) => () => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
   return (
     <div>
       <h3>Todos</h3>
       <ul>
         {todos.map((todo) => (
-          <li title="todo" onClick={() => handleDelete(todo.id)} key={todo.id}>
+          <li title="todo" onClick={handleDelete(todo.id)} key={todo.id}>
             {todo.name}
           </li>
         ))}
@@ -25,5 +23,3 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
     </div>
   );
 };
-
-export default TodoList;
