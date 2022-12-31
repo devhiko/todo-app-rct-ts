@@ -1,4 +1,5 @@
 import { type Todo } from "./Home";
+
 export const TodoList = ({
   todos,
   setTodos,
@@ -7,9 +8,8 @@ export const TodoList = ({
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }) => {
   // delete evt
-  const handleDelete = (id: string) => () => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
+  const handleDelete = (id: string) => () => setTodos(todos.filter((todo) => todo.id !== id));
+
   return (
     <div>
       <h3>Todos</h3>

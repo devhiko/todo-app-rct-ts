@@ -2,6 +2,7 @@ import "../styles/TodoForm.css";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { type Todo } from "./Home";
 import { v1 as uid } from "uuid";
+
 export const TodoForm = ({ setTodos }: { setTodos: Dispatch<SetStateAction<Todo[]>> }) => {
   // todo item state
   const [todoItem, setTodoItem] = useState("");
@@ -11,6 +12,7 @@ export const TodoForm = ({ setTodos }: { setTodos: Dispatch<SetStateAction<Todo[
     setTodos((prev) => [...prev, { name: todoItem, id: uid() }]);
     setTodoItem("");
   };
+
   return (
     <form title="form" className="todo-form" onSubmit={handleSubmit}>
       <input
