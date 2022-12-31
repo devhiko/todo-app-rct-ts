@@ -16,6 +16,6 @@ describe("App test", () => {
     render(<App />);
     const hel = screen.getByRole("heading");
     expect(hel).toBeInTheDocument();
-    expect(hel).toHaveTextContent(/todo app/i);
+    expect(hel).toHaveTextContent(/^Todo App$/);
   });
 });

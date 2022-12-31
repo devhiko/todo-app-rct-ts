@@ -17,7 +17,7 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
       <h3>Todos</h3>
       <ul>
         {todos.map((todo) => (
-          <li onClick={() => handleDelete(todo.id)} key={todo.id}>
+          <li title="todo" onClick={() => handleDelete(todo.id)} key={todo.id}>
             {todo.name}
           </li>
         ))}

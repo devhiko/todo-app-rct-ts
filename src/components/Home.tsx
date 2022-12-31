@@ -13,13 +13,13 @@ const Home = () => {
   // todo state
   const [todos, setTodos] = useState<Todo[]>([]);
   return (
-    <div className="Home">
+    <div title="home" className="Home">
+      <TodoForm setTodos={setTodos} />
       {todos.length ? (
         <TodoList todos={todos} setTodos={setTodos} />
       ) : (
         <p style={{ color: "wheat" }}>No Todos, have fun !</p>
       )}
-      <TodoForm setTodos={setTodos} />
     </div>
   );
 };

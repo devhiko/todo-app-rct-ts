@@ -26,7 +26,7 @@ const TodoForm = ({ setTodos }: TodoFormProps) => {
     setTodoItem("");
   };
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form title="form" className="todo-form" onSubmit={handleSubmit}>
       <input
         type="text"
         onChange={(e) => setTodoItem(e.target.value)}
