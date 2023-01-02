@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Home } from "../components/Home";
 import { TodoForm } from "../components/TodoForm";
 
@@ -31,5 +32,22 @@ describe("Home test", () => {
     render(<Home />);
     const todotext = screen.getByText(/no todos/i);
     expect(todotext).toBeInTheDocument();
+  });
+
+  // * integration tests
+  it("should add todo when typed and clicked add btn", async () => {
+    const user = userEvent.setup();
+    render(<Home />);
+
+    const input = screen.getByPlaceholderText(/what should.../i);
+    const btn = screen.getByDisplayValue(/add todo/i);
+    await user.type(input, "do something");
+    await user.click(btn);
+
+    const inputEl = screen.getByPlaceholderText(/what should/i);
+    expect(inputEl).toHaveValue("");
+
+    const item = screen.getByText(/do some/i);
+    expect(item).toBeInTheDocument();
   });
 });
