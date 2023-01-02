@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { TodoList } from "../components/TodoList";
 
@@ -12,9 +12,9 @@ describe("TodoList test", () => {
   it("should render todo header", () => {
     const mockTodos = [{ name: "", id: "" }];
     const mocksetTodos = jest.fn();
-    render(<TodoList todos={mockTodos} setTodos={mocksetTodos} />);
+    const { getByText } = render(<TodoList todos={mockTodos} setTodos={mocksetTodos} />);
 
-    const todoheader = screen.getByText(/^Todos$/);
+    const todoheader = getByText(/^Todos$/);
     expect(todoheader).toBeInTheDocument();
   });
 
@@ -25,9 +25,9 @@ describe("TodoList test", () => {
       { name: "mest", id: "2" },
     ];
     const mocksetTodos = jest.fn();
-    render(<TodoList todos={mockTodos} setTodos={mocksetTodos} />);
+    const { getAllByTitle } = render(<TodoList todos={mockTodos} setTodos={mocksetTodos} />);
 
-    const todoItems = screen.getAllByTitle(/todo/i);
+    const todoItems = getAllByTitle(/todo/i);
     todoItems.forEach((item, i) => expect(item).toHaveTextContent(mockTodos[i]["name"]));
     expect(todoItems).toHaveLength(mockTodos.length);
   });

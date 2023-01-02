@@ -1,18 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { TodoForm } from "../components/TodoForm";
 
 describe("TodoForm test", () => {
   it("should render todo form everytime", () => {
     const mocksetTodos = jest.fn();
-    render(<TodoForm setTodos={mocksetTodos} />);
+    const { getByTitle, getByPlaceholderText, getByDisplayValue } = render(<TodoForm setTodos={mocksetTodos} />);
 
-    const els = [
-      screen.getByTitle(/form/i),
-      screen.getByPlaceholderText(/what should/i),
-      screen.getByDisplayValue(/add todo/i),
-    ];
-
+    const els = [getByTitle(/form/i), getByPlaceholderText(/what should/i), getByDisplayValue(/add todo/i)];
     els.forEach((el) => expect(el).toBeInTheDocument());
   });
 
@@ -20,9 +15,9 @@ describe("TodoForm test", () => {
     const user = userEvent.setup();
 
     const mocksetTodos = jest.fn();
-    render(<TodoForm setTodos={mocksetTodos} />);
+    const { getByPlaceholderText } = render(<TodoForm setTodos={mocksetTodos} />);
 
-    const input = screen.getByPlaceholderText(/what should/i);
+    const input = getByPlaceholderText(/what should/i);
     await user.click(input);
     await user.type(input, "value");
     expect(input).toHaveValue("value");
@@ -32,9 +27,9 @@ describe("TodoForm test", () => {
     const user = userEvent.setup();
 
     const mocksetTodos = jest.fn();
-    render(<TodoForm setTodos={mocksetTodos} />);
+    const { getByPlaceholderText } = render(<TodoForm setTodos={mocksetTodos} />);
 
-    const input = screen.getByPlaceholderText(/what should/i);
+    const input = getByPlaceholderText(/what should/i);
     await user.click(input);
     await user.type(input, "test");
     expect(input).toHaveValue("test");
@@ -44,10 +39,10 @@ describe("TodoForm test", () => {
     const user = userEvent.setup();
 
     const mocksetTodos = jest.fn();
-    render(<TodoForm setTodos={mocksetTodos} />);
+    const { getByPlaceholderText, getByDisplayValue } = render(<TodoForm setTodos={mocksetTodos} />);
 
-    const input = screen.getByPlaceholderText(/what should/i);
-    const btn = screen.getByDisplayValue(/add todo/i);
+    const input = getByPlaceholderText(/what should/i);
+    const btn = getByDisplayValue(/add todo/i);
     await user.click(input);
     await user.type(input, "test");
     await user.click(btn);

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { App } from "../App";
 
 describe("App test", () => {
@@ -7,15 +7,15 @@ describe("App test", () => {
   });
 
   it("should have app classname", () => {
-    render(<App />);
-    const app = screen.getByTitle("app");
+    const { getByTitle } = render(<App />);
+    const app = getByTitle("app");
     expect(app).toHaveClass("App");
   });
 
   it("should render todo header", () => {
-    render(<App />);
+    const { getByRole } = render(<App />);
 
-    const hel = screen.getByRole("heading");
+    const hel = getByRole("heading");
     expect(hel).toBeInTheDocument();
     expect(hel).toHaveTextContent(/^Todo App$/);
   });
