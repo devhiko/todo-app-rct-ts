@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { TodoList } from "../components/TodoList";
