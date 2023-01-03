@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home test should have home classname 1`] = `
+<div
+  class="Home"
+  title="home"
+>
+  <form
+    class="todo-form"
+    title="form"
+  >
+    <input
+      id="td"
+      placeholder="What should be done"
+      required=""
+      type="text"
+      value=""
+    />
+    <input
+      type="submit"
+      value="Add Todo"
+    />
+  </form>
+  <p
+    style="color: wheat;"
+  >
+    No Todos, have fun !
+  </p>
+</div>
+`;

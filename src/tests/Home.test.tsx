@@ -13,6 +13,7 @@ describe("Home test", () => {
     const { getByTitle } = render(<Home />);
     const home = getByTitle("home");
     expect(home).toHaveClass("Home");
+    expect(home).toMatchSnapshot();
   });
 
   it("should render todo form everytime", () => {
