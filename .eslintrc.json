@@ -4,6 +4,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:playwright/playwright-test",
     "prettier"
   ],
   "rules": {
